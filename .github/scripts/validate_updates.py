@@ -80,6 +80,18 @@ def load_schema(schema_version):
     with schema_path.open(encoding="utf-8") as f:
         return json.load(f)
 
+def normalise_for_schema(value):
+    """Recursively convert YAML-parsed dates and datetimes to ISO strings."""
+    import datetime
+    if isinstance(value, datetime.datetime):
+        return value.isoformat()
+    if isinstance(value, datetime.date):
+        return value.isoformat()
+    if isinstance(value, dict):
+        return {k: normalise_for_schema(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [normalise_for_schema(v) for v in value]
+    return value
 
 def validate_filename(file_path):
     """Check that the filename follows the YYYY-MM-DD-short-title.md pattern."""
@@ -108,6 +120,10 @@ def validate_file(file_path):
         errors.append(f"  {e}")
         return errors  # Cannot proceed without parsed front matter
 
+    # Normalise values that YAML parses into native Python types
+    # but which our schema expects as strings (dates, datetimes).
+    front_matter = normalise_for_schema(front_matter)
+
     # Schema version routing
     schema_version = front_matter.get("schema_version")
     if schema_version is None:
@@ -128,7 +144,6 @@ def validate_file(file_path):
         errors.append(f"  Schema error at '{path}': {err.message}")
 
     return errors
-
 
 def main():
     files = find_update_files()
