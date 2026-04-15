@@ -1,0 +1,68 @@
+# LDT4SSC pilot metadata
+#
+# This file describes your pilot at a glance and is read by the LDT4SSC
+# aggregator to know what your pilot is and how to present it on the
+# Knowledge Hub and the project website.
+#
+# This is the FIRST FILE you should edit after creating your pilot
+# repository from the template. A pilot repository without a properly
+# filled-in pilot.yaml will not be picked up by the aggregator.
+#
+# Replace all placeholder values (in <angle brackets>) with your pilot's
+# real information. Remove any optional fields you do not use.
+
+schema_version: 1
+
+# Short name of the pilot, in lowercase with hyphens (used in URLs)
+short_name: <your-pilot-short-name>
+
+# Human-readable name of the pilot
+name: <Your Pilot Full Name>
+
+# Short description of the pilot (one or two sentences)
+description: >
+  <A short description of what this pilot is about, what challenge it
+  addresses, and what value it aims to deliver. One or two sentences is
+  enough.>
+
+# LDT4SSC work strand: WS1, WS2, or WS3
+work_strand: <WS1 | WS2 | WS3>
+
+# The cities, regions, or communities involved in this pilot
+locations:
+  - city: <City name>
+    country: <Country name>
+    country_code: <ISO 3166-1 alpha-2 code, e.g. LU, IT, ES>
+  # Add more entries as needed for multi-city pilots
+
+# The thematic focus areas of the pilot, drawn from the LDT4SSC topic list.
+# Pick all that apply. The full list is documented in the LDT4SSC Knowledge
+# Hub under Resources for Pilots.
+focus_areas:
+  - <e.g. mobility>
+  - <e.g. air-quality>
+
+# The consortium members participating in this pilot
+consortium:
+  - name: <Organisation name>
+    role: <e.g. Pilot lead, Public authority, Technology partner, Research>
+    country_code: <ISO 3166-1 alpha-2 code>
+    website: <https://...>  # optional
+  # Add more entries for each consortium member
+
+# Primary contact for the pilot
+contact:
+  name: <Contact person name>
+  email: <contact@example.org>
+  organisation: <Organisation name>
+
+# Date the pilot started (ISO 8601 format: YYYY-MM-DD)
+start_date: <YYYY-MM-DD>
+
+# Optional: expected end date of the pilot
+# end_date: <YYYY-MM-DD>
+
+# Optional: list of external repositories or websites associated with this pilot
+# external_links:
+#   - label: <Description>
+#     url: <https://...>
